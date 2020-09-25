@@ -20,7 +20,12 @@ public class CustomerJpaController implements Serializable {
 	private EntityManager entityManager;
 	
 	public void create(Customer customer) {
-		entityManager.persist(customer);
+		try {
+			entityManager.persist(customer);
+		}	
+		catch(Exception ex) {
+			ex.printStackTrace();		
+		}
 	}
 	
 	public List<Customer> list(){
